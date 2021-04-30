@@ -124,7 +124,7 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
             if (contentTitle == null) {
                 contentTitle = "Incoming Call";
             }
-            final String from = callInvite.getFrom() + " is calling";
+            final String from = callInvite.getFrom() + " is calling winker";
 
             NotificationCompat.Builder notificationBuilder =
                     new NotificationCompat.Builder(this)
