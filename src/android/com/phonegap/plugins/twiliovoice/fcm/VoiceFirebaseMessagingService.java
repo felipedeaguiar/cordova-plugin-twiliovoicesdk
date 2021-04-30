@@ -132,7 +132,11 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
                             .setContentTitle(contentTitle)
                             .setContentText(from)
                             .setAutoCancel(true)
-                            .set
+                            .setExtras(extras)
+                            .setContentIntent(pendingIntent)
+                            .setGroup("voice_app_notification")
+                            .setColor(Color.rgb(225, 0, 0));
+
             notificationManager.notify(notificationId, notificationBuilder.build());
 
         }
@@ -152,7 +156,6 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
         if (iconIdentifier == 0) {
             iconIdentifier = getResources().getIdentifier("ic_launcher", "drawable", getPackageName());
         }
-
         int incomingCallAppNameId = getResources().getIdentifier("incoming_call_app_name", "string", getPackageName());
         String contentTitle = getString(incomingCallAppNameId);
         return new Notification.Builder(getApplicationContext(), VOICE_CHANNEL)
