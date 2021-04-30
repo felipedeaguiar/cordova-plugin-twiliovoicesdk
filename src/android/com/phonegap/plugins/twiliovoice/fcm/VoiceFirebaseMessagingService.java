@@ -42,17 +42,6 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
     private static final String NOTIFICATION_ID_KEY = "NOTIFICATION_ID";
     private static final String CALL_SID_KEY = "CALL_SID";
     private static final String VOICE_CHANNEL = "default";
-    public static final String VOICE_CHANNEL_LOW_IMPORTANCE = "notification-channel-low-importance";
-    public static final String VOICE_CHANNEL_HIGH_IMPORTANCE = "notification-channel-high-importance";
-    public static final String INCOMING_CALL_INVITE = "INCOMING_CALL_INVITE";
-    public static final String CANCELLED_CALL_INVITE = "CANCELLED_CALL_INVITE";
-    public static final String INCOMING_CALL_NOTIFICATION_ID = "INCOMING_CALL_NOTIFICATION_ID";
-    public static final String ACTION_ACCEPT = "ACTION_ACCEPT";
-    public static final String ACTION_REJECT = "ACTION_REJECT";
-    public static final String ACTION_INCOMING_CALL_NOTIFICATION = "ACTION_INCOMING_CALL_NOTIFICATION";
-    public static final String ACTION_INCOMING_CALL = "ACTION_INCOMING_CALL";
-    public static final String ACTION_CANCEL_CALL = "ACTION_CANCEL_CALL";
-    public static final String ACTION_FCM_TOKEN = "ACTION_FCM_TOKEN";
 
     private NotificationManager notificationManager;
 
@@ -137,33 +126,13 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
             }
             final String from = callInvite.getFrom() + " is calling winker";
 
-            Intent rejectIntent = new Intent(getApplicationContext(), VoiceFirebaseMessagingService.class);
-            rejectIntent.setAction(Constants.ACTION_REJECT);
-            rejectIntent.putExtra(Constants.INCOMING_CALL_INVITE, callInvite);
-            rejectIntent.putExtra(Constants.INCOMING_CALL_NOTIFICATION_ID, notificationId);
-            PendingIntent piRejectIntent = PendingIntent.getService(getApplicationContext(), 0, rejectIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-            Intent acceptIntent = new Intent(getApplicationContext(), VoiceFirebaseMessagingService.class);
-            acceptIntent.setAction(ACTION_REJECT);
-            acceptIntent.putExtra(INCOMING_CALL_INVITE, callInvite);
-            acceptIntent.putExtra(INCOMING_CALL_NOTIFICATION_ID, notificationId);
-            PendingIntent piAcceptIntent = PendingIntent.getService(getApplicationContext(), 0, acceptIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
             NotificationCompat.Builder notificationBuilder =
                     new NotificationCompat.Builder(this)
                             .setSmallIcon(iconIdentifier)
                             .setContentTitle(contentTitle)
                             .setContentText(from)
                             .setAutoCancel(true)
-                            .setExtras(extras)
-                            .setContentIntent(pendingIntent)
-                            .setGroup("voice_app_notification")
-                            .setColor(Color.rgb(225, 0, 0))
-                           .addAction(android.R.drawable.ic_menu_delete, getString(R.string.decline), piRejectIntent)
-                           .addAction(android.R.drawable.ic_menu_call, getString(R.string.answer), piAcceptIntent)
-                           .setFullScreenIntent(pendingIntent, true);
-
-
+                            .set
             notificationManager.notify(notificationId, notificationBuilder.build());
 
         }
