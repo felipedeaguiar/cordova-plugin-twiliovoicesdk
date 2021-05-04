@@ -67,28 +67,28 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
      */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-//         Log.d(TAG, "Received onMessageReceived()");
-//         Log.d(TAG, "Bundle data: " + remoteMessage.getData());
-//         Log.d(TAG, "From: " + remoteMessage.getFrom());
-//
-//         // Check ifx message contains a data payload.
-//         if (remoteMessage.getData().size() > 0) {
-//             Map<String, String> data = remoteMessage.getData();
-//             final int notificationId = (int) (System.currentTimeMillis() % Integer.MAX_VALUE);
-//             Voice.handleMessage(this, data, new MessageListener()  {
-//                 @Override
-//                 public void onCallInvite(CallInvite callInvite) {
-//                     VoiceFirebaseMessagingService.this.notify(callInvite, notificationId);
-//                     VoiceFirebaseMessagingService.this.sendCallInviteToPlugin(callInvite, notificationId);
-//                 }
-//
-//                 @Override
-//                 public void onCancelledCallInvite(@NonNull CancelledCallInvite cancelledCallInvite, @Nullable CallException callException) {
-//                     Log.i(TAG, "Canceling call invite from: " + cancelledCallInvite.getFrom());
-//                     VoiceFirebaseMessagingService.this.sendCancelledCallToPlugin(notificationId);
-//                 }
-//             });
-//         }
+        Log.d(TAG, "Received onMessageReceived()");
+        Log.d(TAG, "Bundle data: " + remoteMessage.getData());
+        Log.d(TAG, "From: " + remoteMessage.getFrom());
+
+        // Check ifx message contains a data payload.
+        if (remoteMessage.getData().size() > 0) {
+            Map<String, String> data = remoteMessage.getData();
+            final int notificationId = (int) (System.currentTimeMillis() % Integer.MAX_VALUE);
+            Voice.handleMessage(this, data, new MessageListener()  {
+                @Override
+                public void onCallInvite(CallInvite callInvite) {
+                    VoiceFirebaseMessagingService.this.notify(callInvite, notificationId);
+                    VoiceFirebaseMessagingService.this.sendCallInviteToPlugin(callInvite, notificationId);
+                }
+
+                @Override
+                public void onCancelledCallInvite(@NonNull CancelledCallInvite cancelledCallInvite, @Nullable CallException callException) {
+                    Log.i(TAG, "Canceling call invite from: " + cancelledCallInvite.getFrom());
+                    VoiceFirebaseMessagingService.this.sendCancelledCallToPlugin(notificationId);
+                }
+            });
+        }
     }
 
     private void notify(CallInvite callInvite, int notificationId) {
