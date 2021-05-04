@@ -129,7 +129,7 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
             NotificationCompat.Builder notificationBuilder =
                     new NotificationCompat.Builder(this)
                             .setSmallIcon(iconIdentifier)
-                            .setContentTitle(contentTitle)
+                            .setContentTitle('testando')
                             .setContentText('teste felipe')
                             .setAutoCancel(true)
                             .setExtras(extras)
