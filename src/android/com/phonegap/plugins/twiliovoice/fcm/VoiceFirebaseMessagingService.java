@@ -70,7 +70,7 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
         Log.d(TAG, "Received onMessageReceived()");
         Log.d(TAG, "Bundle data: " + remoteMessage.getData());
         Log.d(TAG, "From: " + remoteMessage.getFrom());
-
+        Log.d(TAG, "Plugin customizado");
         // Check ifx message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Map<String, String> data = remoteMessage.getData();
