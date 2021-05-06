@@ -265,7 +265,7 @@ public class TwilioVoicePlugin extends CordovaPlugin {
     public boolean execute(final String action, final JSONArray args,
                            final CallbackContext callbackContext) throws JSONException {
         if ("initializeWithAccessToken".equals(action)) {
-            Log.d(TAG, "Initializing with Access Token");
+            Log.d(TAG, "Iniciou with Access Token");
 
             mAccessToken = args.optString(0);
 
