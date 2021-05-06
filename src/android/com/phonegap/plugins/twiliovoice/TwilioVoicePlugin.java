@@ -102,6 +102,8 @@ public class TwilioVoicePlugin extends CordovaPlugin {
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.d(TAG, "Teste plugin");
+
             String action = intent.getAction();
             Log.d(TAG, "Received local broadcast with action: " + action);
             if (action.equals(ACTION_SET_FCM_TOKEN)) {
