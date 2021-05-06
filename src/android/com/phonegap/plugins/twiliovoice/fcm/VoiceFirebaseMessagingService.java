@@ -165,7 +165,7 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent)
                 .setExtras(extras)
                 .setAutoCancel(true)
-                .setFullScreenIntent(pendingIntent, true);
+                .setFullScreenIntent(pendingIntent, true)
                 .build();
     }
 
