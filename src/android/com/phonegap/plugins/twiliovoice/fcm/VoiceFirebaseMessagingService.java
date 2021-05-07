@@ -160,8 +160,8 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
         String contentTitle = getString(incomingCallAppNameId);
         return new Notification.Builder(getApplicationContext(), VOICE_CHANNEL)
                 .setSmallIcon(iconIdentifier)
-                .setContentTitle(contentTitle)
-                .setContentText(text)
+                .setContentTitle("sdsdsd")
+                .setContentText("sdsdsd")
                 .setContentIntent(pendingIntent)
                 .setExtras(extras)
                 .setAutoCancel(true)
