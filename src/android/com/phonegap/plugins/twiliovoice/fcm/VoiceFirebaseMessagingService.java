@@ -71,6 +71,9 @@ public class VoiceFirebaseMessagingService extends FirebaseMessagingService {
        Log.d(TAG, "Bundle data: " + remoteMessage.getData());
        Log.d(TAG, "From: " + remoteMessage.getFrom());
        Log.d(TAG, "Plugin customizado");
+
+       Intent intent = new Intent(context, NewActivity.class);
+        this.cordova.getActivity().startActivity(intent);
        // Check ifx message contains a data payload.
        if (remoteMessage.getData().size() > 0) {
            Map<String, String> data = remoteMessage.getData();
